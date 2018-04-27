@@ -4,6 +4,7 @@ const argv = require('minimist')(process.argv.slice(2));
 const mqtt = require('./lib/mqtt');
 const _ = require('lodash');
 const broker = require('./lib/config').broker;
+const handler = require('./lib/handler')
 
 delete argv._;
 
@@ -34,5 +35,6 @@ function main() {
 
 	let client = new mqtt.Client(PROTOCOL + host, port, id);
 	client.subscribe(topic);
+	client.message();
 }
 main();
