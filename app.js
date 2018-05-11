@@ -11,8 +11,8 @@ delete argv._;
 const tags = _.keys(argv);
 
 function main() {
-	let id = 'tmp';
-	let topic = 'data';
+	let id = process.env.BROKER_SUB_ID || 'tmp';
+	let topic = process.env.MQTT_TOPIC || 'data';
 	let host = broker.host;
 	let port = broker.port;
 
