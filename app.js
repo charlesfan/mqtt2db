@@ -33,13 +33,10 @@ function main() {
 			}
 	});
 
-	let client = new mqtt.Client(PROTOCOL + host, port, id);
-	client.subscribe(topic);
-	client.message();
+	let topics = [topic, 'LOSN/TI/DEVICE_INFO'];
 
-	//For Device info
-	let devClient = new mqtt.Client(PROTOCOL + host, port, 'Admin');
-	devClient.subscribe('LOSN/TI/DEVICE_INFO');
-	devClient.devMessage();
+	let client = new mqtt.Client(PROTOCOL + host, port, id);
+	client.subscribe(topics);
+	client.message();
 }
 main();
